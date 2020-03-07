@@ -12,7 +12,7 @@ const passport = require('passport');
 
 const container = require('./container');
 
-container.resolve(function(users) {
+container.resolve(function(users, _) {
   mongoose.Promise = global.Promise;
   mongoose.connect('mongodb://localhost/wrestlechat');
   const app = SetupExpress();
@@ -55,5 +55,7 @@ container.resolve(function(users) {
     // make sure these files are loaded after 'session'
     app.use(passport.initialize());
     app.use(passport.session());
+
+    app.locals._ = _;
   }
 });
