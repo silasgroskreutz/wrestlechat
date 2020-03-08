@@ -4,7 +4,9 @@
   "description": "A chat app built using node, mongodb, express and socket.io",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -22,10 +24,11 @@
     "express-promise-router": "^3.0.3",
     "express-session": "^1.17.0",
     "express-sessions": "^1.0.6",
-    "express-validator": "^5.3.1",
+    "express-validator": "^6.4.0",
     "flash": "^1.1.0",
     "lodash": "^4.17.15",
     "mongoose": "^5.9.3",
+    "nodemon": "^2.0.2",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
   }
