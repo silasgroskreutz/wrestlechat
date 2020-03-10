@@ -6,6 +6,8 @@ module.exports = function(_, passport, User, validator) {
       router.get('/', this.indexPage);
       router.get('/signup', this.getSignUp);
       router.get('/home', this.homePage);
+      router.get('/auth/facebook', this.getFacebookLogin);
+      router.get('/auth/callback', this.facebookLogin);
 
       //router.post('/', User.LoginValidation, this.postLogin);
       router.post(
@@ -106,6 +108,16 @@ module.exports = function(_, passport, User, validator) {
     },
 
     postSignUp: passport.authenticate('local.signup', {
+      successRedirect: '/home',
+      failureRedirect: '/signup',
+      failureFlash: true
+    }),
+
+    getFacebookLogin: passport.authenticate('facebook', {
+      scope: 'email'
+    }),
+
+    facebookLogin: passport.authenticate('facebook', {
       successRedirect: '/home',
       failureRedirect: '/signup',
       failureFlash: true
