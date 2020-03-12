@@ -8,22 +8,22 @@ AWS.config.update({
   region: 'us-east'
 });
 
-const S0 = new AWS.S3({});
+const s0 = new AWS.S3({});
 const upload = multer({
   storage: multerS3({
-    S3: S0,
+    s3: s0,
     bucket: 'wrestlechat',
     acl: 'public-read',
     metadata(req, file, cb) {
-      cb(null, { fieldName: file.fieldName });
+      cb(null, { fieldName: file.fieldname });
     },
     key(key, file, cb) {
       cb(null, file.originalname);
-    },
-    rename(fieldName, fileName) {
-      return fileName.replace(/\W+/g, '-');
     }
-  })
+  }),
+  rename(fieldName, filename) {
+    return filename.replace(/\W+/g, '-').toLowerCase();
+  }
 });
 
 exports.Upload = upload;
