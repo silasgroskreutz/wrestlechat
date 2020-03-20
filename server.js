@@ -12,7 +12,7 @@ const passport = require('passport');
 
 const container = require('./container');
 
-container.resolve(function(users, _, admin, home) {
+container.resolve(function(users, _, admin, home, group) {
   mongoose.Promise = global.Promise;
   mongoose.connect('mongodb://localhost/wrestlechat'),
     { useNewUrlParser: true };
@@ -31,6 +31,7 @@ container.resolve(function(users, _, admin, home) {
     users.SetRouting(router);
     admin.SetRouting(router);
     home.SetRouting(router);
+    group.SetRouting(router);
 
     app.use(router);
   }
