@@ -9,6 +9,7 @@ const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const flash = require('flash');
 const passport = require('passport');
+const socketIO = require('socket.io');
 
 const container = require('./container');
 
@@ -21,6 +22,7 @@ container.resolve(function(users, _, admin, home, group) {
   function SetupExpress() {
     const app = express();
     const server = http.createServer(app);
+    const io = socketIO(server);
     server.listen(3000, function() {
       console.log('Listening on port 3000 ');
     });
