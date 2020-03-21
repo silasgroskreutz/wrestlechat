@@ -28,6 +28,8 @@ container.resolve(function(users, _, admin, home, group) {
     });
     ConfigureExpress(app);
 
+    require('./socket/groupchat')(io);
+
     //Setup of the router
     const router = require('express-promise-router')();
     users.SetRouting(router);

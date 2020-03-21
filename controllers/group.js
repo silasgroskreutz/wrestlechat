@@ -8,7 +8,7 @@ module.exports = function() {
       const name = req.params.name;
       res.sender('groupchat/group', {
         title: 'Wrestlechat - Group',
-        name: name
+        groupName: name
       });
     }
   };
