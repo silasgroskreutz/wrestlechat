@@ -8,10 +8,11 @@ module.exports = function(io) {
       callback();
     });
 
-    socket.on('createMessage', message => {
+    socket.on('createMessage', (message, callback) => {
       console.log(message);
-      io.emit('newMessage', {
-        text: message.text
+      io.to(message.room).emit('newMessage', {
+        text: message.text,
+        room: message.room
       });
     });
   });
